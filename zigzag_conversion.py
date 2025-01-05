@@ -1,0 +1,46 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        direction = "down"
+        counter = 0
+        ans = []
+        if numRows == 1:
+            # print(s)
+            return s
+# preping ans
+        for i in range(numRows):
+            ans.append([])
+
+# insert each letter to each row
+        for i, s in enumerate(s):
+            # print(ans)
+            if direction == "down":
+                if counter == numRows - 1:
+                    direction = "up"
+                    ans[counter].append(s)
+                    counter -= 1
+                    continue
+                ans[counter].append(s)
+                counter += 1
+
+            elif direction == "up":
+                if counter == 0:
+                    direction = "down"
+                    ans[counter].append(s)
+                    counter += 1
+                    continue
+                ans[counter].append(s)
+                counter -= 1
+
+
+# assembling ans
+        ansstr = ""
+        for row in ans:
+            for s in row:
+                ansstr += s
+        # print(ansstr)
+        return ansstr
+
+sol = Solution()
+str_inp = input("enter str : ")
+numrow_inp = int(input("enter numrows : "))
+sol.convert(str_inp, numrow_inp)
