@@ -12,24 +12,22 @@ class Solution:
 
 # insert each letter to each row
         for i, s in enumerate(s):
-            # print(ans)
             if direction == "down":
+                ans[counter].append(s)
                 if counter == numRows - 1:
                     direction = "up"
-                    ans[counter].append(s)
                     counter -= 1
-                    continue
-                ans[counter].append(s)
-                counter += 1
+                else:
+                    counter += 1
 
             elif direction == "up":
+                ans[counter].append(s)
                 if counter == 0:
                     direction = "down"
-                    ans[counter].append(s)
                     counter += 1
-                    continue
-                ans[counter].append(s)
-                counter -= 1
+                else:
+                    counter -= 1
+            print(ans)
 
 
 # assembling ans
@@ -37,7 +35,7 @@ class Solution:
         for row in ans:
             for s in row:
                 ansstr += s
-        # print(ansstr)
+        print(ansstr)
         return ansstr
 
 sol = Solution()
